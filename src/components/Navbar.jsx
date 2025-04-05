@@ -11,6 +11,7 @@ function Navbar() {
       padding: '1rem 2rem',
       backgroundColor: '#d2b48c', 
       color: '#5C4033',
+      border: "2px solid #5C4033"
     }}>
       <h1 style={{ fontSize: '1.5rem' }}>DOGGY TOWN</h1>
       <div style={{ display: 'flex', gap: '1.5rem' }}>
