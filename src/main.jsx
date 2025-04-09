@@ -6,7 +6,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import Home from './components/Home.jsx'
 import About from './components/About.jsx'
 import { BrowserRouter } from 'react-router-dom'
-import Products from './components/products.jsx'
+import Products from './components/Products.jsx'
 
 const router = createBrowserRouter([
   {
