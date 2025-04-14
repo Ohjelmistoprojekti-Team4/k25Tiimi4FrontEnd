@@ -13,7 +13,7 @@ function Navbar() {
       color: '#5C4033',
       border: "2px solid #5C4033"
     }}>
-      <h1 style={{ fontSize: '1.5rem' }}>DOGGY TOWN</h1>
+      <h1 style={{ fontSize: '1.5rem' }}>EläinTrendi</h1>
       <div style={{ display: 'flex', gap: '1.5rem' }}>
         <Link to="/" style={{ color: '#5C4033', textDecoration: 'none' }}>Home</Link>
         <Link to="/about" style={{ color: '#5C4033', textDecoration: 'none' }}>About</Link>
