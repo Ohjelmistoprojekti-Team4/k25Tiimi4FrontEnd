@@ -1,0 +1,38 @@
+.about-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.about-page h1 {
+    text-align: center;
+    color: #5C4033;
+}
+
+
+.about-sections {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+
+.about-section {
+    margin: 20px;
+    padding: 20px;
+    background-color: #d2b48c;
+    border-radius: 10px;
+    width: 45%;
+    border: 2px solid #5C4033;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about-section h2 {
+    color: #5C4033;
+    margin-bottom: 10px;
+}
+
+.about-section p {
+    line-height: 1.6;
+}

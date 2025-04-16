@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './Products.css';
 
 export default function Products() {
     const [products, setProducts] = useState([]);
@@ -7,9 +8,9 @@ export default function Products() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    //Fetchataan products API BACKENDISTA
+    //Fetchataan products API RAHTIN KAUTTA
     useEffect(() => {
-        fetch('http://localhost:8080/api/products')
+        fetch('https://k25-tiimi4-backend-ohjelmistoprojekti12345.2.rahtiapp.fi/api/products')
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -26,9 +27,9 @@ export default function Products() {
             });
     }, []);
 
-    // Fetchataan manufacturers API BACKENDISTA
+    // Fetchataan manufacturers API RAHTIN KAUTTA 
     useEffect(() => {
-        fetch('http://localhost:8080/api/manufacturers')
+        fetch('https://k25-tiimi4-backend-ohjelmistoprojekti12345.2.rahtiapp.fi/api/manufacturers')
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -44,11 +45,11 @@ export default function Products() {
     }, []);
 
     if (loading) {
-        return <h3 style={{ display: "grid", placeItems: "center", fontFamily: "Arial, sans-serif", color: "#5C4033" }}>Loading...</h3>;
+        return <h3 className="loading-text">Loading...</h3>;
     }
 
     if (error) {
-        return <h3 style={{ display: "grid", placeItems: "center", color: "red", fontFamily: "Arial, sans-serif" }}>Error: {error}</h3>;
+        return <h3 className="error-text">Error: {error}</h3>;
     }
 
     const filteredProducts = products.filter((product) => {
@@ -57,18 +58,17 @@ export default function Products() {
     });
 
     return (
-        <div style={{ padding: "20px", fontFamily: "Arial, sans-serif", backgroundColor: "#f9f9f9", color: "#333" }}>
-            <h1 style={{ textAlign: "center", color: "#5C4033" }}>Our Products</h1>
+        <div className="products-page">
+            <h1>Our Products</h1>
 
-            <div style={{ marginBottom: "20px", textAlign: "center" }}>
-                <label htmlFor="manufacturerFilter" style={{ marginRight: "10px", fontWeight: "bold"}}>
+            <div className="filter-container">
+                <label htmlFor="manufacturerFilter">
                     Filter by Manufacturer:
                 </label>
                 <select
                     id="manufacturerFilter"
                     value={selectedManufacturer}
                     onChange={(e) => setSelectedManufacturer(e.target.value)}
-                    style={{ padding: "5px", borderRadius: "5px", border: "1px solid #5C4033" }}
                 >
                     <option value="ALL">All</option>
                     {manufacturers.map((manufacturer) => (
@@ -79,17 +79,10 @@ export default function Products() {
                 </select>
             </div>
 
-            <ul style={{ listStyleType: "none", padding: 0, display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
+            <ul className="product-list">
                 {filteredProducts.map((product) => (
-                    <li key={product.productId} style={{
-                        margin: "20px",
-                        padding: "20px",
-                        backgroundColor: "#d2b48c",
-                        borderRadius: "10px",
-                        width: "300px",
-                        border: "2px solid #5C4033",
-                    }}>
-                        <h4 style={{ color: "#5C4033", textAlign: "center" }}>{product.name}</h4>
+                    <li key={product.productId} className="product-card">
+                        <h4>{product.name}</h4>
                         <p><strong>Price:</strong> ${product.price}</p>
                         <p><strong>Type:</strong> {product.type}</p>
                         {product.manufacturer && (
