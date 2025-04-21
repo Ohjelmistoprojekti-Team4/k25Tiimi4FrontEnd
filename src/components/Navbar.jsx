@@ -9,15 +9,15 @@ function Navbar() {
       justifyContent: 'space-between',
       alignItems: 'center',
       padding: '1rem 2rem',
-      backgroundColor: '#d2b48c', 
+      backgroundColor: '#d2b48c',
       color: '#5C4033',
       border: "2px solid #5C4033"
     }}>
       <h1 style={{ fontSize: '1.5rem' }}>AnimalTrend</h1>
       <div style={{ display: 'flex', gap: '1.5rem' }}>
-        <Link to="/" style={{ color: '#5C4033', textDecoration: 'none' }}>Home</Link>
-        <Link to="/about" style={{ color: '#5C4033', textDecoration: 'none' }}>About</Link>
-        <Link to="/products" style={{ color: '#5C4033', textDecoration: 'none' }}>Products</Link>
+        <Link to="/k25Tiimi4FrontEnd" style={{ color: '#5C4033', textDecoration: 'none' }}>Home</Link>
+        <Link to="/k25Tiimi4FrontEnd/about" style={{ color: '#5C4033', textDecoration: 'none' }}>About</Link>
+        <Link to="/k25Tiimi4FrontEnd/products" style={{ color: '#5C4033', textDecoration: 'none' }}>Products</Link>
       </div>
     </nav>
   );
