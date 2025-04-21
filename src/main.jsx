@@ -1,8 +1,7 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
 import React from 'react'
+import { createRoot } from 'react-dom/client'
 import { createHashRouter, RouterProvider } from 'react-router-dom'
+import App from './App.jsx'
 import Home from './components/Home.jsx'
 import About from './components/About.jsx'
 import Products from './components/Products.jsx'
@@ -13,8 +12,8 @@ const router = createHashRouter([
     element: <App />,
     children: [
       {
-        element: <Home />,
-        index: true
+        index: true,
+        element: <Home />
       },
       {
         path: 'about',
@@ -26,7 +25,7 @@ const router = createHashRouter([
       }
     ]
   }
-]);
+])
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>

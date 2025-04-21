@@ -13,7 +13,7 @@ const Home = () => {
           </p>
         </div>
         <img
-          src="/k25Tiimi4FrontEnd/assets/images/homepage.jpg"
+          src="./assets/images/homepage.jpg"
           alt="Pet in clothes"
           className="hero-image"
         />
