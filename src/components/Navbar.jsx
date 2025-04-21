@@ -15,9 +15,9 @@ function Navbar() {
     }}>
       <h1 style={{ fontSize: '1.5rem' }}>AnimalTrend</h1>
       <div style={{ display: 'flex', gap: '1.5rem' }}>
-        <Link to="/k25Tiimi4FrontEnd" style={{ color: '#5C4033', textDecoration: 'none' }}>Home</Link>
-        <Link to="/k25Tiimi4FrontEnd/about" style={{ color: '#5C4033', textDecoration: 'none' }}>About</Link>
-        <Link to="/k25Tiimi4FrontEnd/products" style={{ color: '#5C4033', textDecoration: 'none' }}>Products</Link>
+        <Link to="/" style={{ color: '#5C4033', textDecoration: 'none' }}>Home</Link>
+        <Link to="/about" style={{ color: '#5C4033', textDecoration: 'none' }}>About</Link>
+        <Link to="/products" style={{ color: '#5C4033', textDecoration: 'none' }}>Products</Link>
       </div>
     </nav>
   );

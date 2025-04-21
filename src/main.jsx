@@ -2,14 +2,14 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import React from 'react'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { createHashRouter, RouterProvider } from 'react-router-dom'
 import Home from './components/Home.jsx'
 import About from './components/About.jsx'
 import Products from './components/Products.jsx'
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
-    path: '/k25Tiimi4FrontEnd',
+    path: '/',
     element: <App />,
     children: [
       {
