@@ -88,8 +88,10 @@ export default function Products() {
                         {product.manufacturer && (
                             <p><strong>Manufacturer:</strong> {product.manufacturer.name}</p>
                         )}
-                        <p><strong>Color:</strong> {product.color}</p>
-                        <p><strong>Size:</strong> {product.size}</p>
+                        {product.color && <p><strong>Color:</strong> {product.color}</p>}
+                        {product.size && <p><strong>Size:</strong> {product.size}</p>}
+                        {product.material && <p><strong>Material:</strong> {product.material}</p>}
+                        {product.flavor && <p><strong>Flavor:</strong> {product.flavor}</p>}
                     </li>
                 ))}
             </ul>
