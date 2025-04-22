@@ -8,9 +8,9 @@ export default function Products() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    //Fetchataan products API RAHTIN KAUTTA
+    //Fetchataan products lokaalisti
     useEffect(() => {
-        fetch('https://k25-tiimi4-backend-ohjelmistoprojekti12345.2.rahtiapp.fi/api/products')
+        fetch('https://localhost:8080/api/products')
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -27,9 +27,9 @@ export default function Products() {
             });
     }, []);
 
-    // Fetchataan manufacturers API RAHTIN KAUTTA 
+    // Fetchataan manufacturers lokaalisti
     useEffect(() => {
-        fetch('https://k25-tiimi4-backend-ohjelmistoprojekti12345.2.rahtiapp.fi/api/manufacturers')
+        fetch('https://localhost:8080/api/manufacturers')
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
