@@ -10,7 +10,7 @@ export default function Products() {
 
     //Fetchataan products lokaalisti
     useEffect(() => {
-        fetch('https://localhost:8080/api/products')
+        fetch('http://localhost:8080/api/products')
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -29,7 +29,7 @@ export default function Products() {
 
     // Fetchataan manufacturers lokaalisti
     useEffect(() => {
-        fetch('https://localhost:8080/api/manufacturers')
+        fetch('http://localhost:8080/api/manufacturers')
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
