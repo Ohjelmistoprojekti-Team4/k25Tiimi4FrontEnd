@@ -1,6 +1,9 @@
 .homepage {
-    font-family: Arial, sans-serif;
-    color: #333;
+    font-family: 'Arial', sans-serif;
+    color: #5C4033;
+    background-color: #f5e8dc;
+    padding: 0;
+    margin: 0;
 }
 
 .hero {
@@ -8,31 +11,52 @@
     flex-direction: column;
     align-items: center;
     background: linear-gradient(to right, #ffe5ec, #ffeaea);
-    padding: 2rem;
+    padding: 3rem 1rem;
     text-align: center;
+    border-bottom: 5px solid #d2b48c;
 }
 
 .hero-text {
     max-width: 600px;
+    color: #5C4033;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    line-height: 1.6;
 }
 
 .hero-image {
     width: 100%;
     max-width: 500px;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #5C4033;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .about {
-    padding: 2rem;
+    padding: 3rem 1rem;
     background-color: #fdfdfd;
     text-align: center;
 }
 
 .about h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #5C4033;
 }
 
 .about ul {
@@ -41,6 +65,16 @@
 }
 
 .about li {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin: 0.5rem 0;
+    color: #5C4033;
+}
+
+.footer {
+    background-color: #d2b48c;
+    color: #5C4033;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1rem;
+    margin-top: 2rem;
 }

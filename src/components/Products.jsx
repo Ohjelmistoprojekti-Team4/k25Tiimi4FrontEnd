@@ -8,7 +8,7 @@ export default function Products() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    //Fetchataan products lokaalisti
+    // Fetchataan products lokaalisti
     useEffect(() => {
         fetch('http://localhost:8080/api/products')
             .then((response) => {
@@ -82,8 +82,7 @@ export default function Products() {
             <ul className="product-list">
                 {filteredProducts.map((product) => (
                     <li key={product.productId} className="product-card">
-                        <h4>{product.name}</h4>
-                        <p><strong>Price:</strong> ${product.price}</p>
+                        <h4>{product.name} - ${product.price}</h4>
                         <p><strong>Type:</strong> {product.type}</p>
                         {product.manufacturer && (
                             <p><strong>Manufacturer:</strong> {product.manufacturer.name}</p>

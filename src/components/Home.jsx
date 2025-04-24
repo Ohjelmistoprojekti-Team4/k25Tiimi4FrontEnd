@@ -6,17 +6,15 @@ const Home = () => {
     <div className="homepage">
       <header className="hero">
         <div className="hero-text">
-          <h1>AnimalTrend – Stylish Clothes for Pets</h1>
+          <h1>AnimalTrend - Stylish Clothes for Pets</h1>
           <p>
             Welcome to AnimalTrend, where fashion meets furry friends!
             Here you will find high-quality, comfortable, and cute clothes for cats and dogs.
           </p>
         </div>
-        <img
-          src="./assets/images/homepage.jpg"
-          alt="Pet in clothes"
-          className="hero-image"
-        />
+        <div className="hero-image">
+          <span>🐾 Your Pet's Style Awaits 🐾</span>
+        </div>
       </header>
 
       <section className="about">
@@ -27,6 +25,10 @@ const Home = () => {
           <li>✔️ Finnish customer service</li>
         </ul>
       </section>
+
+      <footer className="footer">
+        <p>© 2025 AnimalTrend. All rights reserved. 🐾</p>
+      </footer>
     </div>
   );
 };
