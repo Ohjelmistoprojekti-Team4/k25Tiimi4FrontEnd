@@ -18,6 +18,7 @@ function Navbar() {
         <Link to="/" style={{ color: '#5C4033', textDecoration: 'none' }}>Home</Link>
         <Link to="/about" style={{ color: '#5C4033', textDecoration: 'none' }}>About</Link>
         <Link to="/products" style={{ color: '#5C4033', textDecoration: 'none' }}>Products</Link>
+        <Link to="/login" style={{ color: '#5C4033', textDecoration: 'none' }}>Login</Link>
       </div>
     </nav>
   );
