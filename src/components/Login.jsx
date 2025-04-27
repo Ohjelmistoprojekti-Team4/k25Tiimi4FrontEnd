@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import './Login.css';
+import { Typography } from "@mui/material";
+import Footer from "./Footer";
 
 function Login() {
 
     const [action, setAction] = useState("Sign Up")
 
     return (
+        <div className="login-page">
         <div className="container">
             <div className="header">
-                <div className="text">{action}</div>
+                <Typography variant="h2" className="text">{action}</Typography>
                 <div className="underline"></div>
             </div>
             <div>
@@ -36,6 +39,9 @@ function Login() {
                     </div>
                 </div>
             </div>
+        </div>
+
+        <Footer />
         </div>
     )
 }

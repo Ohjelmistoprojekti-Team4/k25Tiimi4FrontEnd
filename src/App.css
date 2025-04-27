@@ -1,0 +1,25 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #fdfbf6;
+    color: #70584d;
+}
+
+a {
+    color: #70584d;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #b19875;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.footer {
+    text-align: center;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+}

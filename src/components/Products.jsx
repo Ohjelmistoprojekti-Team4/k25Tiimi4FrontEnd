@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Grid, Typography } from '@mui/material';
+import CheckroomIcon from '@mui/icons-material/Checkroom';
 import './Products.css';
+import Footer from './Footer';
 
 export default function Products() {
     const [products, setProducts] = useState([]);
@@ -58,42 +61,50 @@ export default function Products() {
     });
 
     return (
-        <div className="products-page">
-            <h1>Our Products</h1>
+        <>
+            <div className="products-page">
+                <Typography variant="h1" sx={{ mb: 5 }}>Our Products</Typography>
 
-            <div className="filter-container">
-                <label htmlFor="manufacturerFilter">
-                    Filter by Manufacturer:
-                </label>
-                <select
-                    id="manufacturerFilter"
-                    value={selectedManufacturer}
-                    onChange={(e) => setSelectedManufacturer(e.target.value)}
-                >
-                    <option value="ALL">All</option>
-                    {manufacturers.map((manufacturer) => (
-                        <option key={manufacturer.manufacturerId} value={manufacturer.name}>
-                            {manufacturer.name}
-                        </option>
+                <div className="filter-container" style={{ display: 'flex' }}>
+                    <label htmlFor="manufacturerFilter">
+                        <Typography variant="h3" sx={{ mr: 1 }}>Filter by Manufacturer:</Typography>
+                    </label>
+                    <select
+                        style={{ padding: 2 }}
+                        id="manufacturerFilter"
+                        value={selectedManufacturer}
+                        onChange={(e) => setSelectedManufacturer(e.target.value)}
+                    >
+                        <option value="ALL">All</option>
+                        {manufacturers.map((manufacturer) => (
+                            <option key={manufacturer.manufacturerId} value={manufacturer.name}>
+                                {manufacturer.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
+                <Grid container spacing={5} className="product-list">
+                    {filteredProducts.map((product) => (
+                        <Grid key={product.productId} className="product-card">
+                            <div className="product-header">
+                                <Typography variant="h3" component="h4">{product.name}</Typography>
+                                <span className="price">${product.price}</span>
+                            </div>
+                            
+                            <p><strong>Type:</strong> {product.type}</p>
+                            {product.manufacturer && (
+                                <p><strong>Manufacturer:</strong> {product.manufacturer.name}</p>
+                            )}
+                            {product.color && <p><strong>Color:</strong> {product.color}</p>}
+                            {product.size && <p><strong>Size:</strong> {product.size}</p>}
+                            {product.material && <p><strong>Material:</strong> {product.material}</p>}
+                            {product.flavor && <p><strong>Flavor:</strong> {product.flavor}</p>}
+                        </Grid>
                     ))}
-                </select>
+                </Grid>
             </div>
-
-            <ul className="product-list">
-                {filteredProducts.map((product) => (
-                    <li key={product.productId} className="product-card">
-                        <h4>{product.name} - ${product.price}</h4>
-                        <p><strong>Type:</strong> {product.type}</p>
-                        {product.manufacturer && (
-                            <p><strong>Manufacturer:</strong> {product.manufacturer.name}</p>
-                        )}
-                        {product.color && <p><strong>Color:</strong> {product.color}</p>}
-                        {product.size && <p><strong>Size:</strong> {product.size}</p>}
-                        {product.material && <p><strong>Material:</strong> {product.material}</p>}
-                        {product.flavor && <p><strong>Flavor:</strong> {product.flavor}</p>}
-                    </li>
-                ))}
-            </ul>
-        </div>
+            <Footer />
+        </>
     );
 }
