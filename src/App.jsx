@@ -49,6 +49,33 @@ const theme = createTheme({
       fontFamily: 'Roboto, sans-serif',
     },
   },
+  components: {
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          '& .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#e6d8c6', // normaali
+          },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#b19072', // hover
+          },
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#ccaa80', // 🔸 fokuksessa
+          },
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: '#b19072',
+          '&.Mui-focused': {
+            color: '#ccaa80',
+          },
+        },
+      },
+    },
+  },
 });
 
 function App() {
