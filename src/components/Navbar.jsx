@@ -39,6 +39,9 @@ export default function Navbar() {
               <NavLink to="/login" className={({ isActive }) => isActive ? 'nav-active' : 'nav-link'}>
                 <Typography variant="link">Login</Typography>
               </NavLink>
+              <NavLink to="/register" className={({ isActive }) => isActive ? 'nav-active' : 'nav-link'}>
+                <Typography variant="link">Register</Typography>
+              </NavLink>
             </Box>
 
             {/* Mobile menu button */}

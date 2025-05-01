@@ -7,6 +7,7 @@ import Home from './components/Home.jsx'
 import About from './components/About.jsx'
 import Products from './components/Products.jsx'
 import Login from './components/Login.jsx'
+import Register from './components/Register.jsx'
 
 const router = createHashRouter([
   {
@@ -28,6 +29,10 @@ const router = createHashRouter([
       {
         path: 'login',
         element: <Login />
+      },
+      {
+        path: 'register',
+        element: <Register />
       }
     ]
   }
