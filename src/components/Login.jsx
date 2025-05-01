@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import './Login.css';
-import { Typography } from "@mui/material";
 import Footer from "./Footer";
-import { Password } from "@mui/icons-material";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
 
