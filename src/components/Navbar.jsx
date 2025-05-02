@@ -1,19 +1,45 @@
 import { AppBar, Box, Toolbar, Typography, IconButton, Drawer } from '@mui/material';
-import { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import PetsIcon from '@mui/icons-material/Pets';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import React from 'react';
+
 import { NavLink } from 'react-router-dom';
 import './Nav.css';
+
 
 export default function Navbar() {
 
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const toggleDrawer = (open) => () => {
     setDrawerOpen(open);
   };
+
+  useEffect(() => {
+    const checkLoginStatus = () => {
+      const loggedIn = localStorage.getItem("isLoggedIn") === "true";
+      setIsLoggedIn(loggedIn);
+    };
+
+    // Tarkista kirjautumistila alussa
+    checkLoginStatus();
+
+    // Lisää tapahtumankuuntelija localStorage-muutoksille
+    window.addEventListener("storage", checkLoginStatus);
+
+    window.addEventListener("logoutEvent", checkLoginStatus);
+    window.addEventListener("loginEvent", checkLoginStatus);
+
+
+    // Poista tapahtumankuuntelija komponentin poistuessa
+    return () => {
+      window.removeEventListener("storage", checkLoginStatus);
+      window.removeEventListener("logoutEvent", checkLoginStatus);
+      window.removeEventListener("loginEvent", checkLoginStatus);
+    };
+  }, []);
 
   return (
     <>
@@ -36,12 +62,20 @@ export default function Navbar() {
               <NavLink to="/products" className={({ isActive }) => isActive ? 'nav-active' : 'nav-link'}>
                 <Typography variant="link">Products</Typography>
               </NavLink>
-              <NavLink to="/login" className={({ isActive }) => isActive ? 'nav-active' : 'nav-link'}>
-                <Typography variant="link">Login</Typography>
-              </NavLink>
-              <NavLink to="/register" className={({ isActive }) => isActive ? 'nav-active' : 'nav-link'}>
-                <Typography variant="link">Register</Typography>
-              </NavLink>
+             {isLoggedIn ? (
+                <NavLink to="/profile" className={({ isActive }) => isActive ? 'nav-active' : 'nav-link'}>
+                  <Typography variant="link">Profile</Typography>
+                </NavLink>
+              ) : (
+                <>
+                  <NavLink to="/login" className={({ isActive }) => isActive ? 'nav-active' : 'nav-link'}>
+                    <Typography variant="link">Login</Typography>
+                  </NavLink>
+                  <NavLink to="/register" className={({ isActive }) => isActive ? 'nav-active' : 'nav-link'}>
+                    <Typography variant="link">Register</Typography>
+                  </NavLink>
+                </>
+              )}
             </Box>
 
             {/* Mobile menu button */}
@@ -72,9 +106,20 @@ export default function Navbar() {
                   <NavLink to="/products" onClick={toggleDrawer(false)} className={({ isActive }) => isActive ? 'drawer-active' : 'drawer-link'}>
                     <Typography variant="link">Products</Typography>
                   </NavLink>
-                  <NavLink to="/login" onClick={toggleDrawer(false)} className={({ isActive }) => isActive ? 'drawer-active' : 'drawer-link'}>
-                    <Typography variant="link">Login</Typography>
-                  </NavLink>
+                  {isLoggedIn ? (
+                    <NavLink to="/profile" onClick={toggleDrawer(false)} className={({ isActive }) => isActive ? 'drawer-active' : 'drawer-link'}>
+                      <Typography variant="link">Profile</Typography>
+                    </NavLink>
+                  ) : (
+                    <>
+                      <NavLink to="/login" onClick={toggleDrawer(false)} className={({ isActive }) => isActive ? 'drawer-active' : 'drawer-link'}>
+                        <Typography variant="link">Login</Typography>
+                      </NavLink>
+                      <NavLink to="/register" onClick={toggleDrawer(false)} className={({ isActive }) => isActive ? 'drawer-active' : 'drawer-link'}>
+                        <Typography variant="link">Register</Typography>
+                      </NavLink>
+                    </>
+                  )}
                 </Box>
 
               </Box>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './Login.css'
-import {  useNavigate } from "react-router-dom";
+import {  useNavigate, Link } from "react-router-dom";
 import { Typography } from "@mui/material";
 
 
@@ -28,7 +28,7 @@ function Register() {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:8080/register", {
+            const response = await fetch("http://localhost:8080/api/users/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
@@ -44,7 +44,8 @@ function Register() {
             });
 
             if (response.ok) {
-                navigate("/Home")
+                localStorage.setItem("isLoggedIn", "true");
+                navigate("/")
             } else if(response.status === 401) {
                 setErrorMessage("Invalid credentials")
             } else {
@@ -129,12 +130,15 @@ function Register() {
                                 </div>
                             </div>
                         </div>
-                        <div className="register-link" style={{ textAlign: "center", marginTop: "1rem" }}>
+                       <div className="register-link" style={{ textAlign: "center", marginTop: "1rem" }}>
                             <p>
                                 Do you have an account?{" "}
-                                <a href="#" onClick={navigate("/Login")} style={{ fontWeight: "bold", color: "#8B5E3C", textDecoration: "none" }}>
-                                Login
-                                </a>
+                                <Link
+                                    to="/login"
+                                    style={{ fontWeight: "bold", color: "#8B5E3C", textDecoration: "none" }}
+                                >
+                                    Login
+                                </Link>
                             </p>
                         </div>
                     </div>

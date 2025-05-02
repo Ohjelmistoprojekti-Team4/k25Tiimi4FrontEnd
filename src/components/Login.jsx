@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import './Login.css';
 import Footer from "./Footer";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { Typography } from "@mui/material";
 
 function Login() {
 
@@ -27,7 +28,7 @@ function Login() {
    
 
         try {
-            const response = await fetch("http://localhost:8080/perform-login", {
+            const response = await fetch("http://localhost:8080/api/users/perform-login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
@@ -40,7 +41,14 @@ function Login() {
             });
         
             if (response.ok) {
-                navigate("/Home")
+                localStorage.setItem("isLoggedIn", "true");
+
+                //luodaan ja lähetetään mukautettu event
+                const event = new Event("loginEvent");
+                window.dispatchEvent(event);
+
+                navigate("/")
+                
             } else if (response.status === 401) {
                 setErrorMessage("Invalid credentials")
             } else {
@@ -98,11 +106,14 @@ function Login() {
                         <div className="register-link" style={{ textAlign: "center", marginTop: "1rem" }}>
                             <p>
                                 Don't have an account?{" "}
-                                <a href="/Register"  style={{ fontWeight: "bold", color: "#8B5E3C", textDecoration: "none" }}>
-                                Register
-                                </a>
+                                <Link
+                                    to="/register"
+                                    style={{ fontWeight: "bold", color: "#8B5E3C", textDecoration: "none" }}
+                                >
+                                    Register
+                                </Link>
                             </p>
-                            </div>
+                        </div>
 
                 </div>
             </div>
