@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import { createTheme, ThemeProvider } from '@mui/material';
+import { ShopContextProvider } from './context/Shop-context';
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -81,9 +82,12 @@ const theme = createTheme({
 function App() {
   return (
     <>
+        
         <ThemeProvider theme={theme}>
+          <ShopContextProvider>
           <Navbar />
           <Outlet />
+          </ShopContextProvider>
         </ThemeProvider>
     </>
   );

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Grid, Typography } from '@mui/material';
-import CheckroomIcon from '@mui/icons-material/Checkroom';
 import './Products.css';
 import Footer from './Footer';
+import { ShopContext } from '../context/Shop-context'; 
 
 export default function Products() {
     const [products, setProducts] = useState([]);
@@ -10,6 +10,7 @@ export default function Products() {
     const [selectedManufacturer, setSelectedManufacturer] = useState("ALL");
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const { addToCart, cartItems } = useContext(ShopContext);
 
     // Fetchataan products lokaalisti
     useEffect(() => {
@@ -85,7 +86,10 @@ export default function Products() {
                 </div>
 
                 <Grid container spacing={5} className="product-list">
-                    {filteredProducts.map((product) => (
+                    {filteredProducts.map((product) => {
+                        const cartItemAmount = cartItems[product.productId] || 0;
+
+                        return(
                         <Grid key={product.productId} className="product-card">
                             <div className="product-header">
                                 <Typography variant="h3" component="h4">{product.name}</Typography>
@@ -100,8 +104,12 @@ export default function Products() {
                             {product.size && <p><strong>Size:</strong> {product.size}</p>}
                             {product.material && <p><strong>Material:</strong> {product.material}</p>}
                             {product.flavor && <p><strong>Flavor:</strong> {product.flavor}</p>}
+                            <button className="addToCartBttn" onClick={() => addToCart(product.productId)}>
+                                Add To Cart {cartItemAmount > 0 && <>({cartItemAmount})</>}
+                                </button>
                         </Grid>
-                    ))}
+                        );                    
+                    })}
                 </Grid>
             </div>
             <Footer />

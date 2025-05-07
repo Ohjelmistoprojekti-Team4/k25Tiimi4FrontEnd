@@ -1,8 +1,9 @@
 import { AppBar, Box, Toolbar, Typography, IconButton, Drawer } from '@mui/material';
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import PetsIcon from '@mui/icons-material/Pets';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import { NavLink } from 'react-router-dom';
 import './Nav.css';
@@ -62,10 +63,15 @@ export default function Navbar() {
               <NavLink to="/products" className={({ isActive }) => isActive ? 'nav-active' : 'nav-link'}>
                 <Typography variant="link">Products</Typography>
               </NavLink>
-             {isLoggedIn ? (
-                <NavLink to="/profile" className={({ isActive }) => isActive ? 'nav-active' : 'nav-link'}>
-                  <Typography variant="link">Profile</Typography>
-                </NavLink>
+              {isLoggedIn ? (
+                <>
+                  <NavLink to="/profile" className={({ isActive }) => isActive ? 'nav-active' : 'nav-link'}>
+                    <Typography variant="link">Profile</Typography>
+                  </NavLink>
+                  <NavLink to="/cart" className={({ isActive }) => isActive ? 'nav-active' : 'nav-link'}>
+                    <Typography variant="link">Cart</Typography><ShoppingCartIcon size={32}/>
+                  </NavLink>
+                </>
               ) : (
                 <>
                   <NavLink to="/login" className={({ isActive }) => isActive ? 'nav-active' : 'nav-link'}>
@@ -107,9 +113,14 @@ export default function Navbar() {
                     <Typography variant="link">Products</Typography>
                   </NavLink>
                   {isLoggedIn ? (
-                    <NavLink to="/profile" onClick={toggleDrawer(false)} className={({ isActive }) => isActive ? 'drawer-active' : 'drawer-link'}>
-                      <Typography variant="link">Profile</Typography>
-                    </NavLink>
+                    <>
+                      <NavLink to="/profile" onClick={toggleDrawer(false)} className={({ isActive }) => isActive ? 'drawer-active' : 'drawer-link'}>
+                        <Typography variant="link">Profile</Typography>
+                      </NavLink>
+                      <NavLink to="/cart" onClick={toggleDrawer(false)} className={({ isActive }) => isActive ? 'drawer-active' : 'drawer-link'}>
+                        <Typography variant="link">Cart</Typography>
+                      </NavLink>
+                    </>
                   ) : (
                     <>
                       <NavLink to="/login" onClick={toggleDrawer(false)} className={({ isActive }) => isActive ? 'drawer-active' : 'drawer-link'}>

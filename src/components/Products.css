@@ -66,6 +66,30 @@
     margin-right: 1rem;
 }
 
+.addToCartBttn {
+    background-color: #ccaa80;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; 
+}
+
+
+.addToCartBttn:hover {
+    background-color: #b38e5b; 
+    transform: scale(1.05); 
+}
+
+
+.addToCartBttn:focus {
+    outline: none;
+    box-shadow: 0 0 10px #b38e5b;
+}
+
 @media screen and (max-width: 900px) {
 
     .products-page h1 {

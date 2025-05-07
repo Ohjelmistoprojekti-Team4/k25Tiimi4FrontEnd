@@ -9,6 +9,7 @@ import Products from './components/Products.jsx'
 import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
 import Profile from './components/Profile.jsx'
+import Cart from './components/Cart.jsx'
 
 const router = createHashRouter([
   {
@@ -38,6 +39,10 @@ const router = createHashRouter([
       {
         path: 'profile',
         element: <Profile />
+      },
+      {
+        path: 'cart',
+        element: <Cart />
       }
     ]
   }
