@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import "./Cart.css";
 
 function Cart() {
-    const { cartItems, getTotalPrice } = useContext(ShopContext);
+    const { cartItems, getTotalPrice, clearCart } = useContext(ShopContext);
     const totalPrice = getTotalPrice();
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -40,6 +40,43 @@ function Cart() {
         return <h2>Error: {error}</h2>;
     }
 
+    const handleSubmit = async () => {
+        try {
+            const orderPayload = {
+                userId: 2, //here should be authenticated user
+                products: Object.entries(cartItems)
+                    .filter(([productId, quantity]) => quantity > 0)
+                    .map(([productId, quantity]) => ({
+                        productId: Number(productId),
+                        orderQuantity: quantity
+                    }))
+            };
+    
+            const response = await fetch("http://localhost:8080/api/orders", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(orderPayload)
+            });
+    
+            if (!response.ok) {
+                const errorMessage = await response.text();
+                throw new Error(errorMessage);
+                
+            }
+    
+            alert("Order submitted!");
+            clearCart();
+            navigate("/products");
+    
+        } catch (error) {
+            console.error(error);
+            alert("Error: " + error.message); 
+        }
+    };
+
+
     const cartProducts = products.filter(p => cartItems[p.productId] > 0);
 
     return (
@@ -64,7 +101,11 @@ function Cart() {
             <div className="checkout">
                 <p>Total Price: ${totalPrice.toFixed(2)}</p>
                 <button onClick={() => navigate("/products")}>Continue Shopping</button>
-                <button>Checkout</button>
+                <button type="submit"
+                className="submit"
+                onClick={handleSubmit}>
+                    Checkout
+                </button>
             </div>
         )}
     </div>

@@ -3,7 +3,7 @@ import React, { createContext, useState, useEffect } from 'react';
 export const ShopContext = createContext(null);
 
 export const ShopContextProvider = (props) => {
-    const [cartItems, setCartItems] = useState();
+    const [cartItems, setCartItems] = useState({});
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -57,6 +57,14 @@ export const ShopContextProvider = (props) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     };
 
+    const clearCart = () => {
+        if (products.length > 0) {
+            setCartItems(getDefaultCart(products));
+        } else {
+            setCartItems({});
+        }
+    }
+
     const contextValue = {
         products,
         loading,
@@ -65,6 +73,7 @@ export const ShopContextProvider = (props) => {
         addToCart,
         removeFromCart,
         getTotalPrice,
+        clearCart,
     };
 
     return <ShopContext.Provider value={contextValue}>
