@@ -9,7 +9,7 @@ export const ShopContextProvider = (props) => {
     const [error, setError] = useState(null);
     
     useEffect(() => {
-        fetch('http://localhost:8080/api/products')
+        fetch('https://k25-tiimi4-op1.2.rahtiapp.fi/api/products')
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
