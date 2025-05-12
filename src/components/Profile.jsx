@@ -100,8 +100,8 @@ function Profile() {
             <div className="profile-details">
                 <p><strong>Username:</strong> {userData.username}</p>
                 <p><strong>Email:</strong> {userData.email}</p>
-                <p><strong>First Name:</strong> {userData.firstName}</p>
-                <p><strong>Last Name:</strong> {userData.lastName}</p>
+                <p><strong>First Name:</strong> {userData.firstname}</p>
+                <p><strong>Last Name:</strong> {userData.lastname}</p>
             </div>
             <div className="profile-actions">
                 <button onClick={handleDeleteAccount} className="delete-account-btn">
