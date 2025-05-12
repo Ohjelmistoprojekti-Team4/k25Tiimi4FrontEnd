@@ -8,25 +8,62 @@ function Profile() {
     const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(() => {
+
+        console.log("isLoggedIn: ", localStorage.getItem("isLoggedIn"));
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+            navigate("/login");
+            return;
+        }
+
         fetch("http://localhost:8080/api/users/profile", {
-            method: "GET",
+           method: "GET",
             credentials: "include",
+            headers: {
+               "Accept": "application/json",
+               
+            }
         })
             .then((response) => {
+                console.log("Response status:", response.status);
+                if (response.status === 403) {
+                    localStorage.removeItem("isLoggedIn");
+                    throw new Error("Forbidden");
+                }
+
+                if (response.status === 401) {
+                    localStorage.removeItem("isLoggedIn");
+                    throw new Error("Unauthorized");
+                }
+                if (response.status === 404) {
+                    throw new Error("User not found");
+                }
+
                 if (!response.ok) {
-                    throw new Error("Failed to fetch user data");
+                    throw new Error("Failed to fetch user data " );
                 }
                 return response.json();
+
+                     
             })
-            .then((data) => setUserData(data))
+            .then((data) => {
+               console.log("User data:", data);
+                setUserData(data)}
+            )
             .catch((error) => {
                 console.error("Error fetching user data:", error);
+
+                if (error.message === "Failed to fetch user data") {
+                    localStorage.removeItem("isLoggedIn");
+                    navigate("/login");
+                }
                 setErrorMessage("Failed to load user data");
             });
-    }, []);
+    }, [navigate]);
 
     const handleLogout = () => {
         localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("userId");
+
         const event = new Event("logoutEvent");
         window.dispatchEvent(event);
         navigate("/login");
@@ -63,8 +100,8 @@ function Profile() {
             <div className="profile-details">
                 <p><strong>Username:</strong> {userData.username}</p>
                 <p><strong>Email:</strong> {userData.email}</p>
-                <p><strong>First Name:</strong> {userData.firstname}</p>
-                <p><strong>Last Name:</strong> {userData.lastname}</p>
+                <p><strong>First Name:</strong> {userData.firstName}</p>
+                <p><strong>Last Name:</strong> {userData.lastName}</p>
             </div>
             <div className="profile-actions">
                 <button onClick={handleDeleteAccount} className="delete-account-btn">
@@ -72,6 +109,7 @@ function Profile() {
                 </button>
             </div>
             <button onClick={handleLogout} className="logout-btn">
+                
                 Logout
             </button>
         </div>

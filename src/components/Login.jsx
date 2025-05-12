@@ -28,20 +28,46 @@ function Login() {
    
 
         try {
-            const response = await fetch("http://localhost:8080/api/users/perform-login", {
+            const response = await fetch("http://localhost:8080/api/users/login", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
+                    "Content-Type": "application/json"
                 },
                 credentials: "include", //including jsessionid cookie
-                body: new URLSearchParams({
+                body:JSON.stringify({
                     username: form.username,
                     password: form.password,
                 }),
             });
         
             if (response.ok) {
+
                 localStorage.setItem("isLoggedIn", "true");
+                if (localStorage.getItem("isLoggedIn") === "true") {
+                    console.log("User is logged in");
+                }
+
+                try {
+                    // stores the userId to localstorage
+                    const userResponse = await fetch("http://localhost:8080/api/users/profile", {
+                        method: "GET",
+                        credentials: "include",
+                        headers: {
+                            "Accept": "application/json",
+                        }
+                    });
+                    if (userResponse.ok) {
+                        const userData = await userResponse.json();
+                        //savae the users id
+                        localStorage.setItem("userId", userData.userId);
+                        console.log("user ID saved to localstorage: ", userData.userId);
+                    }
+                } catch (error) {
+                    console.error("Error fetching user data:", error);
+                    setErrorMessage("Failed to load user data");
+                }
+
+                
 
                 //luodaan ja lähetetään mukautettu event
                 const event = new Event("loginEvent");

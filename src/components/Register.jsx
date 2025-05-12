@@ -10,8 +10,8 @@ function Register() {
 
     const [errorMessage, setErrorMessage] = useState("");
     const [form, setForm] = useState({
-        firstname: "",
-        lastname: "",
+        firstName: "",
+        lastName: "",
         email: "",
         username: "",
         password: "",
@@ -26,30 +26,32 @@ function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log("Form data being sent:", form);
 
         try {
             const response = await fetch("http://localhost:8080/api/users/register", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
+                    "Content-Type": "application/json"
                 },
                 credentials: "include",
-                body: new URLSearchParams({
-                    firstname: form.firstname,
-                    lastname: form.lastname,
+                body: JSON.stringify({
+                    firstName: form.firstName,
+                    lastName: form.lastName,
                     email: form.email,
                     username: form.username,
                     password: form.password
                 }),
             });
+            const data = await response.json();
 
             if (response.ok) {
                 localStorage.setItem("isLoggedIn", "true");
                 navigate("/")
-            } else if(response.status === 401) {
+            } else if(response.status === 409) {
                 setErrorMessage("Invalid credentials")
             } else {
-                setErrorMessage("Login failed")
+                setErrorMessage(data.message || "Registration failed");
             }
 
         } catch (err) {
@@ -73,9 +75,9 @@ function Register() {
                             
                             <div className="input">
                                 <input type="text"
-                                    name="firstname"
+                                    name="firstName"
                                     placeholder="Firstname"
-                                    value={form.firstname}
+                                    value={form.firstName}
                                     onChange={handleChange}
                                     required
                                 />
@@ -83,9 +85,9 @@ function Register() {
                             </div>
                             <div className="input">
                                 <input type="text"
-                                    name="lastname"
+                                    name="lastName"
                                     placeholder="Lastname"
-                                    value={form.lastname}
+                                    value={form.lastName}
                                     onChange={handleChange}
                                     required
                                 />
