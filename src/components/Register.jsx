@@ -29,7 +29,7 @@ function Register() {
         console.log("Form data being sent:", form);
 
         try {
-            const response = await fetch("http://localhost:8080/api/users/register", {
+            const response = await fetch("https://k25-tiimi4-op1.2.rahtiapp.fi/api/users/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

@@ -15,7 +15,7 @@ function Profile() {
             return;
         }
 
-        fetch("http://localhost:8080/api/users/profile", {
+        fetch("https://k25-tiimi4-op1.2.rahtiapp.fi/api/users/profile", {
            method: "GET",
             credentials: "include",
             headers: {
@@ -72,7 +72,7 @@ function Profile() {
     const handleDeleteAccount = async () => {
         if (window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
             try {
-                const response = await fetch("http://localhost:8080/api/users/delete", {
+                const response = await fetch("https://k25-tiimi4-op1.2.rahtiapp.fi/api/users/delete", {
                     method: "DELETE",
                     credentials: "include",
                 });

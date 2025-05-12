@@ -14,7 +14,7 @@ export default function Products() {
 
     // Fetchataan products lokaalisti
     useEffect(() => {
-        fetch('http://localhost:8080/api/products')
+        fetch('https://k25-tiimi4-op1.2.rahtiapp.fi/api/products')
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -33,7 +33,7 @@ export default function Products() {
 
     // Fetchataan manufacturers lokaalisti
     useEffect(() => {
-        fetch('http://localhost:8080/api/manufacturers')
+        fetch('https://k25-tiimi4-op1.2.rahtiapp.fi/api/manufacturers')
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
