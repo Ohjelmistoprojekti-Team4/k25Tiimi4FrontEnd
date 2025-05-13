@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import './Login.css';
-import Footer from "./Footer";
 import { useNavigate, Link } from "react-router-dom";
 import { Typography } from "@mui/material";
 
@@ -8,13 +7,13 @@ function Login() {
 
     const navigate = useNavigate()
 
-    
+
     const [errorMessage, setErrorMessage] = useState("")
     const [form, setForm] = useState({
         username: "",
         password: "",
     })
-    
+
 
 
     const handleChange = (e) => {
@@ -25,7 +24,7 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-   
+
 
         try {
             const response = await fetch("https://k25-tiimi4-op1.2.rahtiapp.fi/api/users/login", {
@@ -34,12 +33,12 @@ function Login() {
                     "Content-Type": "application/json"
                 },
                 credentials: "include", //including jsessionid cookie
-                body:JSON.stringify({
+                body: JSON.stringify({
                     username: form.username,
                     password: form.password,
                 }),
             });
-        
+
             if (response.ok) {
 
                 localStorage.setItem("isLoggedIn", "true");
@@ -67,14 +66,14 @@ function Login() {
                     setErrorMessage("Failed to load user data");
                 }
 
-                
+
 
                 //luodaan ja lähetetään mukautettu event
                 const event = new Event("loginEvent");
                 window.dispatchEvent(event);
 
                 navigate("/")
-                
+
             } else if (response.status === 401) {
                 setErrorMessage("Invalid credentials")
             } else {
@@ -92,16 +91,16 @@ function Login() {
     return (
         <div className="login-page">
             <form onSubmit={handleSubmit}>
-            <div className="container">
-                <div className="header">
+                <div className="container">
+                    <div className="header">
                         <Typography variant="h2" className="text">Login</Typography>
                         {errorMessage && <p className="error">{errorMessage} </p>}
-                    <div className="underline"></div>
-                </div>
-                <div>
-                    <div className="inputs">
+                        <div className="underline"></div>
+                    </div>
+                    <div>
+                        <div className="inputs">
 
-                        <div className="input">
+                            <div className="input">
                                 <input type="text"
                                     name="username"
                                     placeholder="Username"
@@ -109,8 +108,8 @@ function Login() {
                                     onChange={handleChange}
                                     required
                                 />
-                        </div>
-                        <div className="input">
+                            </div>
+                            <div className="input">
                                 <input type="password"
                                     name="password"
                                     placeholder="Password"
@@ -118,16 +117,16 @@ function Login() {
                                     onChange={handleChange}
                                     required
                                 />
-                        </div>
+                            </div>
 
-                        <div className="submit-container">
+                            <div className="submit-container">
                                 <div>
                                     <button type="submit"
                                         className="submit">
                                         Login
                                     </button>
                                 </div>
-                        </div>
+                            </div>
                         </div>
                         <div className="register-link" style={{ textAlign: "center", marginTop: "1rem" }}>
                             <p>
@@ -141,14 +140,11 @@ function Login() {
                             </p>
                         </div>
 
+                    </div>
                 </div>
-            </div>
-
-                <Footer />
-                
             </form>
         </div>
-        )
+    )
 }
 
 export default Login;
