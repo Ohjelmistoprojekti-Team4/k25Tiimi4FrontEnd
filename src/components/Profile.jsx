@@ -16,11 +16,11 @@ function Profile() {
         }
 
         fetch("https://k25-tiimi4-op1.2.rahtiapp.fi/api/users/profile", {
-           method: "GET",
+            method: "GET",
             credentials: "include",
             headers: {
-               "Accept": "application/json",
-               
+                "Accept": "application/json",
+
             }
         })
             .then((response) => {
@@ -39,15 +39,16 @@ function Profile() {
                 }
 
                 if (!response.ok) {
-                    throw new Error("Failed to fetch user data " );
+                    throw new Error("Failed to fetch user data ");
                 }
                 return response.json();
 
-                     
+
             })
             .then((data) => {
-               console.log("User data:", data);
-                setUserData(data)}
+                console.log("User data:", data);
+                setUserData(data)
+            }
             )
             .catch((error) => {
                 console.error("Error fetching user data:", error);
@@ -95,23 +96,24 @@ function Profile() {
     }
 
     return (
-        <div className="profile-container">
-            <h2 className="profile-header">Profile</h2>
-            <div className="profile-details">
-                <p><strong>Username:</strong> {userData.username}</p>
-                <p><strong>Email:</strong> {userData.email}</p>
-                <p><strong>First Name:</strong> {userData.firstname}</p>
-                <p><strong>Last Name:</strong> {userData.lastname}</p>
-            </div>
-            <div className="profile-actions">
-                <button onClick={handleDeleteAccount} className="delete-account-btn">
-                    Delete Account
+        <div className="profile-page">
+            <div className="profile-container">
+                <h2 className="profile-header">Profile</h2>
+                <div className="profile-details">
+                    <p><strong>Username:</strong> {userData.username}</p>
+                    <p><strong>Email:</strong> {userData.email}</p>
+                    <p><strong>Name:</strong> {userData.firstname} {userData.lastname}</p>
+                </div>
+                <div className="profile-actions">
+                    <button onClick={handleDeleteAccount} className="delete-account-btn">
+                        Delete Account
+                    </button>
+                </div>
+                <button onClick={handleLogout} className="logout-btn">
+
+                    Logout
                 </button>
             </div>
-            <button onClick={handleLogout} className="logout-btn">
-                
-                Logout
-            </button>
         </div>
     );
 }

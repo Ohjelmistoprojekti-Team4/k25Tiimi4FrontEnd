@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import './Login.css'
+import './Login.css';
+import Footer from "./Footer";
 import {  useNavigate, Link } from "react-router-dom";
 import { Typography } from "@mui/material";
 
@@ -146,7 +147,7 @@ function Register() {
                     </div>
                 </div>
             </form>
-
+        <Footer />
         </div>
     )
 }

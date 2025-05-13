@@ -26,6 +26,7 @@
     border: 6px solid #e6d8c6;
     border-radius: 30px;
     padding: 1.5rem;
+    padding-bottom: 2.5rem;
     box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -52,7 +53,7 @@
     color: white;
     padding: 8px 16px;
     border: none;
-    border-radius: 8px;
+    border-radius: 15px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
@@ -81,7 +82,7 @@
     color: white;
     padding: 10px 20px;
     border: none;
-    border-radius: 8px;
+    border-radius: 15px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;

@@ -15,8 +15,8 @@ export const CartItem = ({ data }) => {
                 <p>Quantity: {quantity}</p>
             </div>
             <div className="buttons">
-                <button onClick={() => removeFromCart(productId)}>-</button>
-                <button onClick={() => addToCart(productId)}>+</button>
+                <button onClick={() => removeFromCart(productId)} style={{fontSize: '15px'}}>-</button>
+                <button onClick={() => addToCart(productId)} style={{fontSize: '15px'}}>+</button>
             </div>
         </div>
     );

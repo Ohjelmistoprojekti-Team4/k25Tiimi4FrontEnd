@@ -87,7 +87,8 @@
 @media screen and (max-width: 900px) {
 
     .title h1 {
-        font-size: 4rem;
+        font-size: 3.2rem;
+        padding: 0;
     }
 
     .title h2, .about h3 {

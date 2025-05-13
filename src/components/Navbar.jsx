@@ -69,7 +69,7 @@ export default function Navbar() {
                     <Typography variant="link">Profile</Typography>
                   </NavLink>
                   <NavLink to="/cart" className={({ isActive }) => isActive ? 'nav-active' : 'nav-link'}>
-                    <Typography variant="link">Cart</Typography><ShoppingCartIcon size={32}/>
+                    <Typography variant="link">Cart</Typography><ShoppingCartIcon size={32} />
                   </NavLink>
                 </>
               ) : (
@@ -100,6 +100,14 @@ export default function Navbar() {
                   <IconButton onClick={toggleDrawer(false)}>
                     <CloseIcon />
                   </IconButton>
+                </Box>
+
+                {/* Mobile title */}
+                <Box sx={{ display: 'flex', flexGrow: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', mb: 3, color: "#70584d" }}>
+                  <PetsIcon className="petsIcon" sx={{ mb: 0.6, fontSize: 30 }} />
+                  <Typography variant="h4">
+                    DogTown
+                  </Typography>
                 </Box>
 
                 <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 3, }}>
