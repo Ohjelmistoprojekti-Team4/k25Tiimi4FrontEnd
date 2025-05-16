@@ -1,6 +1,11 @@
 # Ohjelmistoprojekti 1-opintojaksolla toteutetun ohjelmiston front end.
 #React #Vite
 
+<img src="https://github.com/user-attachments/assets/feb661b0-ce8c-47f5-9407-3c883b456d96" width="300" />
+<img src="https://github.com/user-attachments/assets/54d2837d-0eff-4f60-bca1-0729d0f735bf" width="300" />
+<img src="https://github.com/user-attachments/assets/5f7ccfff-1c1e-4a08-8c1b-5c477e4522e0" width="300" />
+<img src="https://github.com/user-attachments/assets/d9629616-871e-48a6-ac94-af0a5ce1c960" width="300" />
+
 
 
 ## React + Vite
