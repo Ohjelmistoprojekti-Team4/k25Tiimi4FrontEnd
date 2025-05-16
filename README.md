@@ -1,4 +1,9 @@
-# React + Vite
+# Ohjelmistoprojekti 1-opintojaksolla toteutetun ohjelmiston front end.
+#React #Vite
+
+
+
+## React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
